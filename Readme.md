@@ -1,5 +1,4 @@
 <!-- Always leave the MS logo -->
-https://raw.githubusercontent.com/microsoft/sql-server-samples/master/media/solutions-microsoft-logo-small.png
 ![](./media/solutions-microsoft-logo-small.png)
 
 # Sample name
