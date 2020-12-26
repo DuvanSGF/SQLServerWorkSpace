@@ -24,7 +24,7 @@
 <!-- Delete the ones that don't apply -->
 - **Applies to:** SQL Server 2016 (or higher), Azure SQL Database, Azure SQL Data Warehouse, Parallel Data Warehouse
 - **Programming Language:** SQL Server
-- **Authors:** Ing. Duván Mejia Cortes.
+- **Authors:** Ing. Duván Mejia Cortes
 - **Update history:** Version 01. (20201225)
 
 <a name=before-you-begin></a>
