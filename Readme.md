@@ -1,6 +1,10 @@
 <!-- Always leave the MS logo -->
 ![](./media/solutions-microsoft-logo-small.png)
+<<<<<<< HEAD
 ![](./media/SQL-server-logo-small-300x243.png)
+=======
+![](./media/unnamed.png)
+>>>>>>> 960e61bdfed014fc008eb27c6bc3ff1976c683ec
 ## Developed by Ing. Duván Mejia Cortes
 # Sample name
 
