@@ -1,6 +1,6 @@
 <!-- Always leave the MS logo -->
 ![](./media/solutions-microsoft-logo-small.png)
-<<<<<<< HEAD
+<<<<<<< HEADewewewewe
 ![](./media/SQL-server-logo-small-300x243.png)
 =======
 ![](./media/unnamed.png)
