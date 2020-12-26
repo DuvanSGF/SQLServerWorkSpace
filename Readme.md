@@ -1,5 +1,6 @@
 <!-- Always leave the MS logo -->
 ![](./media/solutions-microsoft-logo-small.png)
+![](./media/unnamed.png)
 ## Developed by Ing. Duván Mejia Cortes
 # Sample name
 
