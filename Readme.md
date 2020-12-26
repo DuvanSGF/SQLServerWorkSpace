@@ -1,20 +1,15 @@
 <!-- Always leave the MS logo -->
 ![](./media/solutions-microsoft-logo-small.png)
 ![](./media/SQL-server-logo-small-300x243.png)
-## Developed by Ing. Duván Mejia Cortes
-# Sample name
 
-Briefly describe what the sample does. Describe the benefit of running this sample.
-
-
-<!-- Add a diagram if you have it -->
-
-![Alt text](/media/image-name.png "<Friendly name>")
+# Developed by Ing. Duván Mejia Cortes
+## Databases in SQL server.
 
 
 ### Contents
 
 [About this sample](#about-this-sample)<br/>
+[Objective](#objective)<br/>
 [Before you begin](#before-you-begin)<br/>
 [Run this sample](#run-this-sample)<br/>
 [Sample details](#sample-details)<br/>
@@ -28,13 +23,20 @@ Briefly describe what the sample does. Describe the benefit of running this samp
 
 <!-- Delete the ones that don't apply -->
 - **Applies to:** SQL Server 2016 (or higher), Azure SQL Database, Azure SQL Data Warehouse, Parallel Data Warehouse
-- **Key features:**
-- **Workload:**
-- **Programming Language:**
-- **Authors:**
-- **Update history:**
+- **Programming Language:** SQL Server
+- **Authors:** Ing. Duván Mejia Cortes.
+- **Update history:** Version 01. (20201225)
 
 <a name=before-you-begin></a>
+
+## Objective
+
+In this part of the course (tutorial), we are going to learn everything about Relational Databases (SQL server).
+To access the databases we will use Microsoft SQL Server Management Studio 18
+
+
+
+<a name=objective></a>
 
 ## Before you begin
 
