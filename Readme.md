@@ -1,6 +1,6 @@
 <!-- Always leave the MS logo -->
-![](./media/solutions-microsoft-logo-small.png)
-![](./media/SQL-server-logo-small-300x243.png)
+![](./iconos/solutions-microsoft-logo-small.png)
+![](./iconos/SQL-server-logo-small-300x243.png)
 
 # Developed by Ing. Duván Mejia Cortes
 ## Databases in SQL server.
