@@ -51,7 +51,7 @@ select * from productos;
  º Para insertar valores consecutivos.
  º Puede ir en la Primary -> Aumenta de 1 a 1 , o la podemos personalizar
  º Creamos un Query que nos crea una tabla, el valor inicial comienza en 11 y incrementa de 2 en 2
- º cON identity tambien podemos Agregar valores repetidos, quitar primary Key 
+ º cON identity tambien podemos Agregar valores repetidos, quitar primary Key
 */
 
 Drop table IF EXISTS PIncrement;
@@ -75,3 +75,11 @@ GO
 
 SELECT * from PIncrement;
 GO
+
+-- Otras formas de hacer elñ insert de una sola vez
+INSERT INTO [dbo].[Productos]
+values('Iphone','apple',1000000),('Saco','adidas',1000000)
+
+-delete from  or delete elimina toda una tabla
+-Truncate table soloelimina el contenido
+- Drop table elimina la tabla
