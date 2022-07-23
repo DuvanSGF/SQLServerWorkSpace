@@ -14,14 +14,15 @@ Order By 2 ASC
 
 --Creamos una Nueva BD con Datosy establecemos llaves primarias
 Create table Battletransaction(
-Id Int not null Primary key,
+Id Int not null Primary key IDENTITY(1,1),
 Amount smallmoney NOT NULL,
 BattleId int Not Null,
 DateOfTransaction smalldatetime NULL,
+BattleDay dateime Null, CONSTRAINT defBattleday DEFAULT GETDATE(),
 CONSTRAINT fk_battles FOREIGN KEY (BattleId) REFERENCES [dbo].[battles] (Id)
 )
 
-ALTER TABLE battles ADD CONSTRAINT FK_battles_id Primary Key (id)
+ALTER TABLE battles ADD CONSTRAINT FK_battles_id Primary Key (id) IDENTITY(1,1)
 
 --Insertamos algunos Datos
 Insert into battletransaction
@@ -48,3 +49,35 @@ Order By A.DineroBatalla desc
 
 Rollback tran
 Rollback Transaction
+
+-----------------------------------
+-- constraints
+--------------------------------------
+
+-- Agragamos una nueva Columna y se agrag un constrait por default
+Alter table Battletransaction
+add battleday datetime
+
+Alter table Battletransaction
+add constraint defbattleday DEFAULT GETDATE() for battleday;
+
+-- Aca agregamos una un constraint para validar un campo string. 
+ALter table hero with nocheck --por si la tabla ya tiene datos insertados
+add constraint name check
+(REPLACE(Hero, '.','') = Name or Name is null)
+
+-- Aqui si se quiere crear de una vez
+Create table tblTemp
+( herosName varchar (20) null, CONSTRAINT ck_herosName check
+(REPLACE(herosName,'.','') = herosName or herosName is Null))
+
+--Eiminar un constraint
+Alter table tableName
+drop constrait pK_NameConstraint
+
+--Devlolver las ultias identidades
+Select @@IDENTITY
+Select SCOPE_IDENTITY()
+ --Especifica table
+ Select IDENT_CURRENT('TableName')
+
