@@ -32,6 +32,16 @@ AS
 
 	Begin tran
 Select * from [dbo].[ViewBattleherosdetail] Where Cantidad = 1
+
+--Para desactivar un trigger
+DISABLE TRIGGER [Tr_ViewBattleherosdetail] on TABLE_NAME
+
+
+
+
+
+
+
 update ViewBattleherosdetail
 SET Cantidad = 8
 Where Cantidad = 1
