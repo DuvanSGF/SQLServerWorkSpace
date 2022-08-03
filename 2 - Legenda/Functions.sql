@@ -10,7 +10,7 @@ With Mytable as (
 Select top(10) * from Mytable
 GO
 
---Funciones Transact SQl - Server 
+--Funciones Transact SQl - Server
 If exists (Select * from sys.objects where name = 'NumberOfTransaction')
 	Drop FUNCTION NumberOfTransaction
 GO
@@ -25,7 +25,7 @@ BEGIN
 	Return @NumberOfTransaction
 END
 GO
-
+Select Id , NumberOfTransaction(id) from Heros
  -- or 1=1
 
 --Sql Dinamico
