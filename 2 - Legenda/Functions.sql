@@ -26,7 +26,6 @@ BEGIN
 END
 GO
 Select Id , NumberOfTransaction(id) from Heros
-
  -- or 1=1
 
 --Sql Dinamico
@@ -61,4 +60,3 @@ Rollback tran
 
 alter sequence newSeq
 restart with 1
-
