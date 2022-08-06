@@ -15,24 +15,24 @@ Select Min(BattleId) as Min,Max(BattleId) as Max from [dbo].[Battletransaction]
 --Heroes que empiezan por B
 Select * from Heros
 Where name Like'b%'
- 
- --Discriminación de datos
-Select * 
+
+ --Discriminaciï¿½n de datos
+Select *
 from [dbo].[battles] A
-Where hero_id in 
+Where hero_id in
 		(Select id from Heros Where name Like'b%')
 		Order by hero_id
 
-Select * 
+Select *
 from [dbo].[battles] A
-Where hero_id = any 
+Where hero_id = any
 		(Select id from Heros Where name Like'b%')
 		Order by hero_id
 
 --Contar las transacciones por Hero
-Select P.Name,C.name, 
+Select P.Name,C.name,
 rank() over(partition By P.Name order By C.Name) as THERANK
-from [dbo].[battles] A With(Nolock) 
+from [dbo].[battles] A With(Nolock)
 Join [dbo].[Battletransaction] B With(Nolock)  on A.id = B.battleId
 Join [dbo].[Heros] C With(Nolock)  on A.hero_id = C.id
 Join [dbo].[power] P With(Nolock)  on C.powerid = P.id
@@ -57,7 +57,7 @@ Go
 Select *, (Select count(*) from battles as B
 				Where B.hero_id = H.Id) as CantidadBatallas
 from [dbo].[Heros] H
-Where H.id = any 
+Where H.id = any
 		(Select id from Heros Where name Like'b%')
 		Order by H.id
 GO
@@ -97,6 +97,8 @@ With numbers as (
 	Select Min(RowNumber) as StartingBattle, Max(RowNumber) AS EndingBattle,
 	Max(RowNumber) - Min(RowNumber) + 1 AS NumberBatlles
 	from tblgroup
-	Group By TheGroup	
+	Group By TheGroup
 GO
 
+--necesidad
+Select FLOOR(DATEDIFF(DAY,Columndate, GETDATE())/365.25) AS AGE

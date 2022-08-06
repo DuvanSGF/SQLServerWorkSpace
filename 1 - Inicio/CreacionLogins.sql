@@ -16,7 +16,6 @@ Drop user batman
 --Con esto vario usuarios puieden acceder a la bd
 alter database MarvelUniverse set multi_user
 
-
 --Asignarle un usuario para utilizar la repctiva BD
 CREATE USER MarvelUniverse for login marvel with default_schema=dbo
 

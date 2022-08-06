@@ -12,7 +12,7 @@ GO
 -- Creacion de la tabla
 create table productos
 (
-id_Cod int identity primary key,
+id_Cod int primary key identity(1,1) ,
 cod_prod varchar(4) not null,
 nombre varchar(50)not null,
 existencia int not null,
@@ -62,7 +62,7 @@ create table PIncrement
 id_Cod int identity(11,2) primary key,
 cod_prod varchar(4) not null,
 nombre varchar(50)not null,
-existencia int not null,
+existencia int not null
 )
 GO
 
