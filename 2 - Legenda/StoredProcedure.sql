@@ -30,6 +30,7 @@ Create Procedure SP_BattleTransaction (
 	@BattleId Int,
 	@MessageResult varchar(Max) OUTPUT
 )
+WITH ENCRYPTION
 AS
 
 BEGIN

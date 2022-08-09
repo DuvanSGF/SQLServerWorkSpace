@@ -36,12 +36,6 @@ Select * from [dbo].[ViewBattleherosdetail] Where Cantidad = 1
 --Para desactivar un trigger
 DISABLE TRIGGER [Tr_ViewBattleherosdetail] on TABLE_NAME
 
-
-
-
-
-
-
 update ViewBattleherosdetail
 SET Cantidad = 8
 Where Cantidad = 1
@@ -52,3 +46,14 @@ go
 Select * from [Battletransaction]
 
 -- Tambien se puede hacer sobre una Columna
+
+--Exercise trigger
+CREATE TRIGGER trigPrueba
+ON heros
+AFTER INSERT
+AS
+Begin
+SET NOCOUNT
+Insert into tableName values (Select top(1) ID from heros), ´insert´)
+END
+GO
