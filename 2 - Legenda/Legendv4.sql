@@ -7,7 +7,6 @@ USE HackTeam;
 GO
 
 --Imprimir el rango el top 5 
-
 With E1 as (
 Select Top(5)  Event_id, participant_name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
 from [dbo].[scoretable]
@@ -16,7 +15,7 @@ Where event_id = 2187
 E2 as (
 Select Top(10) Event_id, participant_name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
 from [dbo].[scoretable]
-Where event_id = 3478  
+Where event_id = 3478
 )
 
 UNION ALL
@@ -39,7 +38,7 @@ Group by participant_name, Event_id,score
 having Count(*) >1
 
 --Con subconsulta
-SELECT Distinct participant_name 
+SELECT Distinct participant_name
 from [dbo].[scoretable]
 Where event_id = 3478
 GO
@@ -50,4 +49,7 @@ from [dbo].[scoretable]
 Where event_id = 3478
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f106eb3 (Continue Improvement)
