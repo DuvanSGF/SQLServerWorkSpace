@@ -1,5 +1,5 @@
 -- =============================================
--- Author:		Ing. Duv�n Mejia
+-- Author:		Ing. Duván Mejia
 -- Create date: 2022-08-09
 -- Description:	Exercise Advanced for SQL Server V3
 -- =============================================
@@ -17,6 +17,7 @@ create table scoretable(
  score float
 )
 GO
+
 
 -- Inserto los datos correspondientes a las transacciones
 INSERT INTO [dbo].[scoretable] (event_id,participant_name,score)
