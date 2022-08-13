@@ -6,19 +6,30 @@
 USE HackTeam;
 GO
 
---Imprimir el rango el top 5 
+--Imprimir el rango el top 5
 With E1 as (
-Select Top(5)  Event_id, participant_name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
-from [dbo].[scoretable]
-Where event_id = 2187
+Select * from (
+Select Event_id, participant_name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
+from [dbo].[scoretable] as A
+Where event_id = 2187 AND score = (SELECT MAX(score)   
+                        FROM [dbo].[scoretable] AS B  
+                        WHERE A.participant_name = B.participant_name)  
+) as E1table
+Where DenseTheRank between 1 and 3
 ),
-E2 as (
-Select Top(10) Event_id, participant_name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
-from [dbo].[scoretable]
-Where event_id = 3478
-)
 
-UNION ALL
+E2 as (
+Select * from (
+Select Event_id as Id, participant_name as Name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
+from [dbo].[scoretable] as A
+Where event_id = 3478 AND score = (SELECT MAX(score)   
+                        FROM [dbo].[scoretable] AS B  
+                        WHERE A.participant_name = B.participant_name)  
+) as TempTable
+Where DenseTheRank between 1 and 3
+
+),
+
 Select Top(5) Event_id, participant_name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
 from [dbo].[scoretable]
 Where event_id = 4361
@@ -43,13 +54,107 @@ from [dbo].[scoretable]
 Where event_id = 3478
 GO
 
-
+--Corregir
 Select Event_id as Id, participant_name as Name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
 from [dbo].[scoretable]
 Where event_id = 3478
 
+--Revisar BN 
+USE HackTeam;
+GO
 
-<<<<<<< HEAD
+Select * from (
+Select Event_id as Id, participant_name as Name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
+from [dbo].[scoretable] as A
+Where event_id = 3478 AND score = (SELECT MAX(score)   
+                        FROM [dbo].[scoretable] AS B  
+                        WHERE A.participant_name = B.participant_name)  
+) as TempTable
+Where DenseTheRank between 1 and 3
 
-=======
->>>>>>> f106eb3 (Continue Improvement)
+--Ejercicio Completar
+USE AdventureWorks2012  
+SELECT TOP(10) BusinessEntityID, Rate,   
+       RANK() OVER (ORDER BY Rate DESC) AS RankBySalary  
+FROM HumanResources.EmployeePayHistory AS eph1  
+WHERE RateChangeDate = (SELECT MAX(RateChangeDate)   
+                        FROM HumanResources.EmployeePayHistory AS eph2  
+                        WHERE eph1.BusinessEntityID = eph2.BusinessEntityID)  
+ORDER BY BusinessEntityID;
+
+
+
+USE AdventureWorks2012
+GO
+SELECT Cust.CustomerID,
+       OrderHeader.CustomerID,
+       OrderHeader.SalesOrderID,
+       OrderHeader.Status
+FROM Sales.Customer Cust 
+INNER JOIN Sales.SalesOrderHeader OrderHeader
+ON Cust.CustomerID = OrderHeader.CustomerID
+FOR XML AUTO;
+
+USE AdventureWorks2012;
+GO
+SELECT ProductModelID,
+       Name
+FROM Production.ProductModel
+WHERE ProductModelID=122 OR ProductModelID=119
+FOR XML PATH ('');
+GO
+SELECT ProductModelID AS "@id",
+       Name
+FROM Production.ProductModel
+WHERE ProductModelID=122 or ProductModelID=119
+FOR XML PATH ('ProductModelData'), root ('Root');
+GO
+
+
+
+
+USE AdventureWorks2012;
+GO
+SELECT ProductModelID     AS "@ProductModelID",
+       Name               AS "@ProductModelName",
+      (SELECT ProductID AS "data()"
+       FROM   Production.Product
+       WHERE  Production.Product.ProductModelID =
+              Production.ProductModel.ProductModelID
+       FOR XML PATH ('')) AS "@ProductIDs",
+       (SELECT Name AS "ProductName"
+       FROM   Production.Product
+       WHERE  Production.Product.ProductModelID =
+              Production.ProductModel.ProductModelID
+        FOR XML PATH ('')) AS "ProductNames"
+FROM   Production.ProductModel
+WHERE  ProductModelID= 7 or ProductModelID=9
+FOR XML PATH('ProductModelData');
+
+
+
+
+-- Solcion Luego la reviso 
+USE HackTeam;
+GO
+BEGIN TRAN
+declare @Authors Table(ID int,AuthorName varchar(20))
+Insert @Authors(ID,AuthorName)
+Values
+(1,'Rajendra'),(1,'Raj')
+,(2,'Sonu'),(2,'Raju')
+,(3,'Akshita'),(3,'Akshu')
+,(4,'Kashish'),(4,'Kusum')
+select * from @Authors
+
+SELECT DISTINCT 
+       ID, 
+(
+    SELECT SUBSTRING(
+    (
+        SELECT ',' + AuthorName
+        FROM @Authors
+        WHERE ID = t.ID FOR XML PATH('')), 2, 200000)
+) AS AuthorName
+FROM @Authors t;
+rollback tran

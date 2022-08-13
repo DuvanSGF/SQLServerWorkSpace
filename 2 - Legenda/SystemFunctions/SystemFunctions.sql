@@ -84,5 +84,11 @@ SELECT @@IDLE * CAST(@@TIMETICKS AS float) AS 'Idle microseconds',
    GETDATE() AS 'as of'; 
    
 
-
+--Tiempo de uso de servidor
 SELECT @@IO_BUSY * CAST(@@TIMETICKS AS float) as Tiempoensqlmicroseconds
+--
+SELECT @@PACK_RECEIVED AS 'Packets Received';
+
+
+SELECT 7+'1'+3
+SELECT 'dUVAN'+1
