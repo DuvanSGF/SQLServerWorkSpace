@@ -111,29 +111,6 @@ FOR XML PATH ('ProductModelData'), root ('Root');
 GO
 
 
-
-
-USE AdventureWorks2012;
-GO
-SELECT ProductModelID     AS "@ProductModelID",
-       Name               AS "@ProductModelName",
-      (SELECT ProductID AS "data()"
-       FROM   Production.Product
-       WHERE  Production.Product.ProductModelID =
-              Production.ProductModel.ProductModelID
-       FOR XML PATH ('')) AS "@ProductIDs",
-       (SELECT Name AS "ProductName"
-       FROM   Production.Product
-       WHERE  Production.Product.ProductModelID =
-              Production.ProductModel.ProductModelID
-        FOR XML PATH ('')) AS "ProductNames"
-FROM   Production.ProductModel
-WHERE  ProductModelID= 7 or ProductModelID=9
-FOR XML PATH('ProductModelData');
-
-
-
-
 -- Solcion Luego la reviso 
 USE HackTeam;
 GO
@@ -158,3 +135,88 @@ SELECT DISTINCT
 ) AS AuthorName
 FROM @Authors t;
 rollback tran
+
+GO
+
+--Ejecuta Aqui
+
+With DUVAN as (
+Select * from (
+Select Event_id, participant_name As Name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
+from [dbo].[scoretable] as A
+Where event_id = 2187 AND score = (SELECT MAX(score)   
+                        FROM [dbo].[scoretable] AS B  
+                        WHERE A.participant_name = B.participant_name)  
+) as E1table
+Where DenseTheRank between 1 and 3
+),
+--Select * from DUVAN 
+s as (
+Select DISTINCT
+		DenseTheRank,
+		Event_id,
+(
+		SELECT SUBSTRING(
+		(
+			SELECT ',' + Name
+			From DUVAN
+			WHERE DenseTheRank = t.DenseTheRank FOR XML PATH('')), 2, 200000)
+) as DuvanName
+ from DUVAN t) 
+
+  Select * from s
+ Pivot (count(Event_id) for DuvanName in ([1],[2],[3])) as Mypvt
+
+
+--SELECT Event_id AS Evento,   
+--  [1], [2], [3]
+--FROM  
+--(
+--  SELECT DenseTheRank, Event_id ,DuvanName  
+--  FROM s
+--) AS SourceTable  
+--PIVOT  
+--(  
+--	count(*) as event_iD
+--  FOR DuvanName IN ([1], [2], [3])  
+--) AS PivotTable;
+
+-- -- Pivot table with one row and five columns  
+--SELECT 'AverageCost' AS Cost_Sorted_By_Production_Days,   
+--  [0], [1], [2], [3], [4]  
+--FROM  
+--(
+--  SELECT DaysToManufacture, StandardCost   
+--  FROM Production.Product
+--) AS SourceTable  
+--PIVOT  
+--(  
+--  AVG(StandardCost)  
+--  FOR DaysToManufacture IN ([0], [1], [2], [3], [4])  
+--) AS PivotTable;
+
+ Select * from s
+ Pivot (count(Event_id) for DenseTheRank in ([1],[2],[3])) as Mypvt
+
+
+-- SELECT SO.DenseTheRank, SO.DuvanName
+--, STUFF((
+--       SELECT ','+p.DuvanName
+--       FROM DUVAN SOP
+--       INNER JOIN s P
+--       ON SOP.DenseTheRank = p.DenseTheRank
+--       --AND SOP.SpecialOfferID = SO.SpecialOfferID
+--       FOR XML PATH('')
+--),1,1,'' ) as productos
+--FROM s SO
+
+
+-- SELECT
+--       DuvanName
+--       ,STUFF((
+--             SELECT ','+DuvanName
+--             FROM s PSC
+--             WHERE DenseTheRank = PC.DenseTheRank
+--             FOR XML PATH('')
+--       ),1,1,'')
+--FROM s PC
