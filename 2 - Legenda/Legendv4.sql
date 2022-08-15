@@ -1,6 +1,7 @@
 -- =============================================
 -- Author:		Ing. Duván Mejia
 -- Create date: 2022-08-09
+-- Update date: 2022-08-15
 -- Description:	Exercise Advanced for SQL Server V4
 -- =============================================
 USE HackTeam;
