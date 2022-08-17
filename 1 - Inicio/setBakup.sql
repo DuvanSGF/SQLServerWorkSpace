@@ -112,3 +112,13 @@ USE [master]
 GO
 ALTER DATABASE [MarvelUniverse] SET  READ_WRITE
 GO
+
+--WithDiferencia
+BACKUP DATABASE [AdventureWorks2012] TO  DISK = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\Backup\AdventureWorks2012diff.diff' WITH  DIFFERENTIAL , NOFORMAT, NOINIT,  NAME = N'AdventureWorks2012-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+GO
+
+--FullBackup
+BACKUP DATABASE [AdventureWorks2012] TO  DISK = N'C:\Backup\pruebaBackup.bak'
+WITH NOFORMAT, NOINIT,  NAME = N'AdventureWorks2012-Full Database Backup',
+SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+GO

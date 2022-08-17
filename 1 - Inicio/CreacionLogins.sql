@@ -19,6 +19,9 @@ alter database MarvelUniverse set multi_user
 --Asignarle un usuario para utilizar la repctiva BD
 CREATE USER MarvelUniverse for login marvel with default_schema=dbo
 
+--Agregar el usuario a un respectivo espquema
+GRANT ALTER ON SCHEMA::dbo TO MarvelUniverse
+
 --A los usuarios no se les puede dar permisos de crear BD, solo a los logins
 GRANT CREATE ANY DATABASE TO batman
 
