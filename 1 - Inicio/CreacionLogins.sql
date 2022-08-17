@@ -21,7 +21,7 @@ CREATE USER MarvelUniverse for login marvel with default_schema=dbo
 
 --Agregar el usuario a un respectivo espquema
 GRANT ALTER ON SCHEMA::dbo TO MarvelUniverse
-
+GRANT CONTROL ON SCHEMA::dbo TO marvel
 --A los usuarios no se les puede dar permisos de crear BD, solo a los logins
 GRANT CREATE ANY DATABASE TO batman
 
