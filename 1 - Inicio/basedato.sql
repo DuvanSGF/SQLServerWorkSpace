@@ -59,10 +59,20 @@ GO
 
 create table PIncrement
 (
-id_Cod int identity(11,2) primary key,
+id_Cod int identity(1,1) NOT NULL primary key,
 cod_prod varchar(4) not null,
 nombre varchar(50)not null,
 existencia int not null
+)
+GO
+--Or
+create table PIncrement
+(
+id_Cod int identity(1,1) NOT NULL,
+cod_prod varchar(4) not null,
+nombre varchar(50)not null,
+existencia int not null.
+CONSTRAINT PK_idcod Primary kEY (id_Cod)
 )
 GO
 
