@@ -12,7 +12,7 @@ Group By B.name
 Having Sum(A.Damage) > 554222
 Order By 2 ASC
 
---Creamos una Nueva BD con Datosy establecemos llaves primarias
+--Creamos una Nueva BD con Datos y establecemos llaves primarias
 Create table Battletransaction(
 Id Int not null Primary key IDENTITY(1,1),
 Amount smallmoney NOT NULL,
@@ -22,7 +22,12 @@ BattleDay dateime Null, CONSTRAINT defBattleday DEFAULT GETDATE(),
 CONSTRAINT fk_battles FOREIGN KEY (BattleId) REFERENCES [dbo].[battles] (Id)
 )
 
+--Agregamos llaves primary
 ALTER TABLE battles ADD CONSTRAINT FK_battles_id Primary Key (id) IDENTITY(1,1)
+
+--Agregamos Foreing key
+ALTER TABLE Battletransaction
+ADD FOREING KEY (battleid) REFERENCES battles(id)
 
 --Insertamos algunos Datos
 Insert into battletransaction
@@ -152,39 +157,6 @@ USE MarvelUniverse
 Select * from sys.dm_db_missing_index_details
 Where database_id = db_id()
 
-
---Cursor
-declare @HeroId int
-declare dmc CURSOR FOR
-select hero_id
-from [dbo].[battles]
-Where hero_id between 1 and 5
-Order BY hero_id ASC
-
-open dmc
-Fetch next from dmc into @HeroId
-While @@FETCH_STATUS = 0
-Begin
-	Select * from [dbo].[Heros] where Id = @HeroId
-	Fetch next from dmc into @HeroId
-	End
-close dmc
-deallocate dmc
-If exists (Select * from sys.objects where name = 'NumberOfTransaction')
-	Drop FUNCTION NumberOfTransaction
-GO
-CREATE FUNCTION NumberOfTransaction(@HeroId int)
-RETURNS int
-AS
-BEGIN
-	DECLARE @NumberOfTransaction int
-	SELECT @NumberOfTransaction = count(*) FROM battles
-	Where hero_id = @HeroId
-	Return @NumberOfTransaction
-END
-GO
-Select Id , dbo.NumberOfTransaction(id) from Heros
-go
 
 SET STATISTICS IO OFF
 GO

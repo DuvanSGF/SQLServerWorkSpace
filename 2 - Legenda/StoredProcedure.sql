@@ -86,3 +86,13 @@ SELECT @MessageResult, @ReturnStatus as Return_Status
 --EXECUTE [dbo].[SP_BattleTransaction] 8, @AverageBalance OUTPUT
 GO
 ---Terminar
+--Ejercicio
+CREATE PROC sp_ejemplo (
+	@idhero int
+)
+AS
+Select * from heros where id = @idhero
+GO
+
+--Ejecuto
+EXEC sp_ejemplo 7
