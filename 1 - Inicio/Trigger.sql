@@ -57,3 +57,16 @@ SET NOCOUNT
 Insert into tableName values (Select top(1) ID from heros), ´insert´)
 END
 GO
+
+--Inserta en otras tabla si ingreso un pasi como mexico
+CREATE TRIGGER trigPrueba2
+ON heros
+AFTER INSERT
+AS
+Begin
+SET NOCOUNT
+IF (SELECT idpais from Inserted) = 'MEX'
+  Insert into PACIENTELOG(idpaciente,idpais,fechaalta)
+    Select i.idpaciente, getdate() from Inserted i
+END
+GO

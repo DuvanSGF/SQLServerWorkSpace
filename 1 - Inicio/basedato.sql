@@ -39,7 +39,11 @@ insert into productos values ( 'A012', 'iphone 11', 12);
 -- Mostramos la tabla
 select * from productos;
 
+-- Para conocer toda la info de cualquier objeto
+sp_help battle
 
+--Descripion del objeto SP o view
+sp_helptext SP_BattleTransaction
 
 /* Funcion del GO
 
@@ -93,3 +97,7 @@ values('Iphone','apple',1000000),('Saco','adidas',1000000)
 -delete from  or delete elimina toda una tabla
 -Truncate table soloelimina el contenido
 - Drop table elimina la tabla
+
+
+-- Pasar de esquema
+ALTER SCHEMA toesquema transfer battle
