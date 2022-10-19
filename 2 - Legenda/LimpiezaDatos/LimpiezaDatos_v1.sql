@@ -31,3 +31,5 @@ CREATE TABLE DirtyData
 
 --Para volver al usuario DBO
 revert
+
+--Note: See next script LimpiezaDatos_v2.sql
