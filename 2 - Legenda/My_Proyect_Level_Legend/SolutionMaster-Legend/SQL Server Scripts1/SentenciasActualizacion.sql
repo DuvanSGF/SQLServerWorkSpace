@@ -49,3 +49,15 @@ from dbo.HerosDetail
 
 --verificamos 
 Select * from HerosDetailBackup
+
+--Select Into (Para copiar tabla con campo IDENTITY)
+-- Solo usar identity si el id en la tabla no existe
+Select IDENTITY(INT,1,1) AS id, * INTO HerosBackup
+from [dbo].[Heros]
+Select * from HerosBackup
+
+
+--CloneDatabase
+DBCC CLONEDATABASE(MarvelUniverse, MarvelUniverseCopia)
+--Queda como solo lectura.
+--En propiedades --Opcions --Read only
