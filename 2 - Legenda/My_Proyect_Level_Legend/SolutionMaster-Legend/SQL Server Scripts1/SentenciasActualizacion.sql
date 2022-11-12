@@ -61,3 +61,5 @@ Select * from HerosBackup
 DBCC CLONEDATABASE(MarvelUniverse, MarvelUniverseCopia)
 --Queda como solo lectura.
 --En propiedades --Opcions --Read only
+
+
