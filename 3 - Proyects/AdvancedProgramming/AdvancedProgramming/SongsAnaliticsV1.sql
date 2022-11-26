@@ -59,6 +59,17 @@ END
 --EXEC createTables 'music',2019,2,2022,2
 --See result tables Image
 
+/*
+Generating tables
+music2019_2
+music2020_1
+music2020_2
+music2021_1
+music2021_2
+music2022_1
+music2022_2
+*/
+
 
 
  

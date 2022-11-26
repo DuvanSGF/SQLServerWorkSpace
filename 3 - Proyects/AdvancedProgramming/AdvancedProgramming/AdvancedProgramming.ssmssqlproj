@@ -25,12 +25,6 @@
           <AssociatedConnUserName>sa</AssociatedConnUserName>
           <FullPath>SongsAnaliticsV1.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery3.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-A6H79BB:False:sa</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-A6H79BB</AssociatedConnSrvName>
-          <AssociatedConnUserName>sa</AssociatedConnUserName>
-          <FullPath>SQLQuery3.sql</FullPath>
-        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
