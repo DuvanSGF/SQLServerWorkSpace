@@ -1,5 +1,5 @@
 -- =============================================
--- Author:		Ing. Duv·n Mejia Cortes
+-- Author:		Ing. Duv√°n Mejia Cortes
 -- Create date: 19-10-2022
 -- Description:	SQL Advanced - Limpieza de Datos v3
 -- =============================================
@@ -65,7 +65,7 @@ BEGIN
 	SET @i = @i + 1
 END
 
---Comprobamos la informaciÛn
+--Comprobamos la informaci√≥n
 --Antes
 Select * From [performance].[DirtyData]
 --Ahora
@@ -73,4 +73,4 @@ Select * From [performance].[Bands]
 
 --TRUNCATE TABLE [performance].[Bands]
 
---Note: If you have a questions, Write me please. Att DuvanSGF
+--Note: If you have any questions, let me know and Write me please. Att DuvanSGF
