@@ -57,6 +57,7 @@ WHILE @startYear <= @finalYear
 END
 
 --EXEC createTables 'music',2019,2,2022,2
+--See result tables Image
 
 
 
