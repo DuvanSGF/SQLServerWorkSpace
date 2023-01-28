@@ -10,8 +10,8 @@
 USE HackTeam;  
 GO
 
-IF OBJECT_ID('dbo.createTables', 'P') IS NOT NULL  
-   DROP PROCEDURE dbo.createTables;  
+IF OBJECT_ID('dbo.CreateTablesMusic', 'P') IS NOT NULL  
+   DROP PROCEDURE dbo.CreateTablesMusic;  
 GO  
 
 CREATE PROC createTables(@tableName varchar(Max), 
@@ -39,14 +39,13 @@ WHILE @startYear <= @finalYear
 								concat(
 										'CREATE TABLE ',@tableName,@startYear,'_',@initialPeriod,' (',
 																					'id int primary key not null identity(1,1),',
-																					'song varchar(50) not null,',
+																					'songName varchar(50) not null,',
 																					'minutesListened int null,',
 																					'yearLaunched int null,',
 																					'songDuration int null,',
 																					'likeSong int null,',
 																					'averatingSong int null,',
 																					'singerId int null)');
-
 					EXECUTE sp_executesql @cmd
 
 					SET @initialPeriod = @initialPeriod + 1

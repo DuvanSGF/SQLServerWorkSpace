@@ -19,11 +19,17 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
-        <FileNode Name="SongsAnaliticsV1.sql">
+        <FileNode Name="SP_BulkInsert.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-A6H79BB:False:sa</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-A6H79BB</AssociatedConnSrvName>
           <AssociatedConnUserName>sa</AssociatedConnUserName>
-          <FullPath>SongsAnaliticsV1.sql</FullPath>
+          <FullPath>SP_BulkInsert.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SP_CreateTablesMusicV1.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-A6H79BB:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-A6H79BB</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>SP_CreateTablesMusicV1.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
