@@ -5,16 +5,30 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-A6H79BB"
   DTS:CreatorName="DESKTOP-A6H79BB\sqlab"
-  DTS:DTSID="{F9FB8264-20E1-4B67-9CED-684F66E0DBC1}"
+  DTS:DTSID="{63A2A513-C973-4038-A1CD-3B787AB83FE1}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5131.0"
   DTS:LocaleID="9226"
-  DTS:ObjectName="ScriptComponents"
+  DTS:ObjectName="Scriptcomponents"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{866F48CB-81B9-45EA-8D97-56D0BE41115B}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{DE6E03FA-A6E8-4441-9A94-6D6A980FCCDA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.MarvelUniverse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F2BF89C3-83D8-40BC-B990-4BEAE7B9DBF4}"
+      DTS:ObjectName="LocalHost.MarvelUniverse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=MarvelUniverse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Scriptcomponents-{F2BF89C3-83D8-40BC-B990-4BEAE7B9DBF4}LocalHost.MarvelUniverse;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""

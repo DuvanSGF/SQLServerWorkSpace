@@ -1,0 +1,649 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/22/2023 5:59:27 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-A6H79BB"
+  DTS:CreatorName="DESKTOP-A6H79BB\sqlab"
+  DTS:DTSID="{A4DE64CD-345C-4E4B-A2AA-995E02B387A1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
+  DTS:LocaleID="9226"
+  DTS:ObjectName="ReportBattles"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{DA7918AD-C86A-4C0C-92CD-48CF9AC92AB4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BattleHeroesReport]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{8515C2D4-AF5E-4618-A972-38B4ABEAE4C5}"
+      DTS:ObjectName="BattleHeroesReport">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="9226"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\sqlab\Music\Git\SQLServerWorkSpace\4 - SSIS\DemoDeploySSIS\Files\BattleHeroesReport.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="name"
+              DTS:DTSID="{FB1E76EC-E07C-4B23-ACAA-F8057A470DC7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Wins"
+              DTS:DTSID="{734CDA98-2267-4D1E-BA6C-8CFE817530CD}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{FE004454-6554-453D-818E-C1D07EA1341A}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\sqlab\Music\Git\SQLServerWorkSpace\4 - SSIS\DemoDeploySSIS\Files\BattleReport.xls;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{B5F21C27-BD83-4A22-95B3-1C2599EC17DF}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\sqlab\Music\Git\SQLServerWorkSpace\4 - SSIS\DemoDeploySSIS\Files\BattleReport.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.MarvelUniverse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{394A236C-813F-485F-A744-883AEF284D0E}"
+      DTS:ObjectName="LocalHost.MarvelUniverse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=MarvelUniverse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-ReportBattles-{394A236C-813F-485F-A744-883AEF284D0E}LocalHost.MarvelUniverse;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B79DE6F0-B641-4353-BCA4-EF215B9AC70A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="Select A.name, COUNT(*) as Wins from Heros A"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="QueryHero">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\BattleReport"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{31992319-C7DF-45ED-B5C9-3237E2C58273}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="BattleReport"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\BattleReport\Destino de archivo plano"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Destino de archivo plano;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Destino de archivo plano"
+              localeId="9226"
+              name="Destino de archivo plano"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si los datos sobrescriben el archivo de destino o se anexan al mismo."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Especifica el texto para escribir en el archivo de destino antes de escribir ningún dato."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="Cuando el calificador de texto está habilitado, especifica si este contendrá secuencias de escape o no en los datos escritos en el archivo de destino."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\BattleReport\Destino de archivo plano.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BattleHeroesReport]"
+                  connectionManagerRefId="Package.ConnectionManagers[BattleHeroesReport]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\BattleReport\Destino de archivo plano.Inputs[Entrada de destino de archivo plano]"
+                  hasSideEffects="true"
+                  name="Entrada de destino de archivo plano">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\BattleReport\Destino de archivo plano.Inputs[Entrada de destino de archivo plano].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\BattleReport\Destino de archivo plano.Inputs[Entrada de destino de archivo plano].ExternalColumns[name]"
+                      lineageId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[name]" />
+                    <inputColumn
+                      refId="Package\BattleReport\Destino de archivo plano.Inputs[Entrada de destino de archivo plano].Columns[Wins]"
+                      cachedDataType="i4"
+                      cachedName="Wins"
+                      externalMetadataColumnId="Package\BattleReport\Destino de archivo plano.Inputs[Entrada de destino de archivo plano].ExternalColumns[Wins]"
+                      lineageId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Wins]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\BattleReport\Destino de archivo plano.Inputs[Entrada de destino de archivo plano].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="100"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\BattleReport\Destino de archivo plano.Inputs[Entrada de destino de archivo plano].ExternalColumns[Wins]"
+                      dataType="i4"
+                      name="Wins" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\BattleReport\Destino de Excel"
+              componentClassID="Microsoft.ExcelDestination"
+              contactInfo="Destino de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Destino de Excel"
+              name="Destino de Excel"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">Destino_de_Excel</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\BattleReport\Destino de Excel.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\BattleReport\Destino de Excel.Inputs[Entrada de destino de Excel]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de Excel">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\BattleReport\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\BattleReport\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[name]"
+                      lineageId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[name]" />
+                    <inputColumn
+                      refId="Package\BattleReport\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Wins]"
+                      cachedDataType="i4"
+                      cachedName="Wins"
+                      externalMetadataColumnId="Package\BattleReport\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Wins]"
+                      lineageId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Wins]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\BattleReport\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="255"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\BattleReport\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Wins]"
+                      dataType="wstr"
+                      length="255"
+                      name="Wins" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\BattleReport\Destino de Excel.Outputs[Salida de error de destino de Excel]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de Excel"
+                  synchronousInputId="Package\BattleReport\Destino de Excel.Inputs[Entrada de destino de Excel]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\BattleReport\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\BattleReport\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\BattleReport\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\BattleReport\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\BattleReport\Multidifusión"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multidifusión;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Distribuye cada fila de entrada a cada una de las filas de una o varias salidas. Por ejemplo, se crea una bifurcación de un flujo de datos para realizar una copia de los datos de modo que se puedan enmascarar algunos valores antes de compartirlos con los asociados externos."
+              name="Multidifusión">
+              <inputs>
+                <input
+                  refId="Package\BattleReport\Multidifusión.Inputs[Entrada de Multidifusión 1]"
+                  name="Entrada de Multidifusión 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\BattleReport\Multidifusión.Outputs[Salida de Multidifusión 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Salida de Multidifusión 1"
+                  synchronousInputId="Package\BattleReport\Multidifusión.Inputs[Entrada de Multidifusión 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\BattleReport\Multidifusión.Outputs[Salida de multidifusión 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Salida de multidifusión 1"
+                  synchronousInputId="Package\BattleReport\Multidifusión.Inputs[Entrada de Multidifusión 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\BattleReport\Multidifusión.Outputs[Salida de multidifusión 2]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Salida de multidifusión 2"
+                  synchronousInputId="Package\BattleReport\Multidifusión.Inputs[Entrada de Multidifusión 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\BattleReport\Origen de OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select A.name, COUNT(*) as Wins from Heros A
+Inner Join battles B On A.id = B.hero_id
+Where B.Status = 1
+group by A.name
+order by 2 desc</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\BattleReport\Origen de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.MarvelUniverse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.MarvelUniverse]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[name]"
+                      length="100"
+                      lineageId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Wins]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Wins]"
+                      lineageId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Wins]"
+                      name="Wins"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="100"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Wins]"
+                      dataType="i4"
+                      name="Wins" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Wins]"
+                      dataType="i4"
+                      lineageId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Wins]"
+                      name="Wins" />
+                    <outputColumn
+                      refId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\BattleReport.Paths[Salida de Multidifusión 1]"
+              endId="Package\BattleReport\Destino de Excel.Inputs[Entrada de destino de Excel]"
+              name="Salida de Multidifusión 1"
+              startId="Package\BattleReport\Multidifusión.Outputs[Salida de Multidifusión 1]" />
+            <path
+              refId="Package\BattleReport.Paths[Salida de multidifusión 1]"
+              endId="Package\BattleReport\Destino de archivo plano.Inputs[Entrada de destino de archivo plano]"
+              name="Salida de multidifusión 1"
+              startId="Package\BattleReport\Multidifusión.Outputs[Salida de multidifusión 1]" />
+            <path
+              refId="Package\BattleReport.Paths[Salida de origen de OLE DB]"
+              endId="Package\BattleReport\Multidifusión.Inputs[Entrada de Multidifusión 1]"
+              name="Salida de origen de OLE DB"
+              startId="Package\BattleReport\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\BattleReport"
+          TopLeft="403,172" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\BattleReport">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\BattleReport\Origen de OLE DB"
+          TopLeft="454,27" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\BattleReport\Destino de Excel"
+          TopLeft="247,344" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\BattleReport\Destino de archivo plano"
+          TopLeft="603,348" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\BattleReport\Multidifusión"
+          TopLeft="468,193" />
+        <EdgeLayout
+          Id="Package\BattleReport.Paths[Salida de origen de OLE DB]"
+          TopLeft="538.5,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,124"
+              Start="0,0"
+              End="0,116.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,116.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\BattleReport.Paths[Salida de Multidifusión 1]"
+          TopLeft="516,235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-188.5,109"
+              Start="0,0"
+              End="-188.5,101.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.3389830508475" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.3389830508475"
+                    Point2="0,44.3389830508475"
+                    Point3="-4,44.3389830508475" />
+                  <mssgle:LineSegment
+                    End="-184.5,44.3389830508475" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-184.5,44.3389830508475"
+                    Point2="-188.5,44.3389830508475"
+                    Point3="-188.5,48.3389830508475" />
+                  <mssgle:LineSegment
+                    End="-188.5,101.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\BattleReport.Paths[Salida de multidifusión 1]"
+          TopLeft="560,235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="143,113"
+              Start="0,0"
+              End="143,105.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.9661016949153" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.9661016949153"
+                    Point2="0,45.9661016949153"
+                    Point3="4,45.9661016949153" />
+                  <mssgle:LineSegment
+                    End="139,45.9661016949153" />
+                  <mssgle:CubicBezierSegment
+                    Point1="139,45.9661016949153"
+                    Point2="143,45.9661016949153"
+                    Point3="143,49.9661016949153" />
+                  <mssgle:LineSegment
+                    End="143,105.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\BattleReport\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\BattleReport\Destino de Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

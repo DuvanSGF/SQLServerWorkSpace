@@ -6,13 +6,14 @@
   DTS:CreatorComputerName="DESKTOP-A6H79BB"
   DTS:CreatorName="DESKTOP-A6H79BB\sqlab"
   DTS:DTSID="{C5FD564B-27E8-4DF7-A612-EABF34A0EF41}"
+  DTS:EnableConfig="True"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5131.0"
   DTS:LocaleID="9226"
   DTS:ObjectName="OLEDBCommand"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{B198F447-D61B-4EBC-8207-C2F7DAD49EF3}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{C6EA1D19-DB56-4F8C-912A-1804D3325D10}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -433,13 +434,17 @@ Where health is not null</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="133,42"
-          Id="Package\Tarea Flujo de datos\Hero Table"
-          TopLeft="445,62" />
+          Size="185,42"
+          Id="Package\Tarea Flujo de datos\Comando de OLE DB"
+          TopLeft="418,367" />
         <NodeLayout
           Size="168,42"
           Id="Package\Tarea Flujo de datos\Columna derivada"
           TopLeft="420,245" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Tarea Flujo de datos\Hero Table"
+          TopLeft="445,62" />
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB]"
           TopLeft="507.75,104">
@@ -462,10 +467,6 @@ Where health is not null</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="185,42"
-          Id="Package\Tarea Flujo de datos\Comando de OLE DB"
-          TopLeft="418,367" />
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada]"
           TopLeft="507.25,287">

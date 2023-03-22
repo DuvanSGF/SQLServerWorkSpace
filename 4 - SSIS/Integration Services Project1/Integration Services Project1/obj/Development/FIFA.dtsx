@@ -6,13 +6,14 @@
   DTS:CreatorComputerName="DESKTOP-A6H79BB"
   DTS:CreatorName="DESKTOP-A6H79BB\sqlab"
   DTS:DTSID="{A36F8707-50AF-4498-B427-38190A6D4A9C}"
+  DTS:EnableConfig="True"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5131.0"
   DTS:LocaleID="9226"
   DTS:ObjectName="FIFA"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{00A5647C-B820-4B01-B250-497EA7587285}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{99399075-121F-42CB-9B21-F8EF38D6E62A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -698,7 +699,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Fifa Source">
+    design-time-name="Package\Tarea Flujo de datos\Fifa Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -711,7 +712,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Fifa Destination">
+    design-time-name="Package\Tarea Flujo de datos\Fifa Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

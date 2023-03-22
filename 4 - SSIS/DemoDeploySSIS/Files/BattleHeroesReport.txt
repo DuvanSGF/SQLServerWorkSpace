@@ -1,0 +1,14 @@
+Batman,4
+Lillian,2
+Spiderman,2
+Thor,1
+Nicholas,1
+Alex,1
+Allison,1
+Bobby,1
+Erik,1
+Hannah,1
+Jerry,1
+Joel,1
+Jose,1
+Joseph,1
