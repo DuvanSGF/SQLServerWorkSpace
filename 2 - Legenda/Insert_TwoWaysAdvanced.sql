@@ -6,7 +6,7 @@
 --We can make different Way to do a Insert
 --1 Insert to Temp Table or specific table with this
 Select name, powerId
-into MyTable --Temp
+into TempTable -- That table cannot exist before
 from Hero
 Where 1 = 1 -- If you want to Copy all informatio
 
@@ -18,6 +18,19 @@ Values ('Batman', 1)
 Insert Hero
 Values ('Batman', 1)
 
---Insert into With Select
+--Insert into With Select, or when the table Exists
 Insert Hero
 Select name, powerid from HeroCopy
+
+
+--If you can Copy A table without Identify
+--Life Hack 
+select top 6 ProductID,name,SafetyStockLevel
+into #tmp_table
+from [Production].[Product]
+
+union all
+
+select ProductID,name,SafetyStockLevel
+from [Production].[Product]
+where 1<>1
