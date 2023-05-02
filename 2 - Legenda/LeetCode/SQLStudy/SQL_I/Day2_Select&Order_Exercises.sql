@@ -26,3 +26,14 @@ Select user_id,
 name = SUBSTRING(Upper(name),1,1) + LOWER(SUBSTRING(name, 2, LEN(name))) 
 from Users
 order by user_id asc
+
+--1484. Group Sold Products By The Date
+--https://leetcode.com/problems/group-sold-products-by-the-date/description/?envType=study-plan&id=sql-i
+Select sell_date, Count(product) as num_sold, STRING_AGG(product,',')
+	WITHIN GROUP (ORDER BY product) AS products
+    from 
+    (Select Distinct * from Activities) d
+    Group by sell_date
+Order By Sell_date 
+
+
