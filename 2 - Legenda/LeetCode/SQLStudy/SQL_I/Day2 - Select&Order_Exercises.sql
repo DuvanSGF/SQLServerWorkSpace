@@ -1,3 +1,10 @@
+--Exercises Solution
+-- =============================================
+-- Author:		In. Duván Albeiro Mejia Cortes
+-- Create date: 30-04-2023
+-- Description:	Select & Order
+-- ============================================= 
+
 --1873. Calculate Special Bonus
 --https://leetcode.com/problems/calculate-special-bonus/?envType=study-plan&id=sql-i
 Select employee_id,
@@ -36,4 +43,7 @@ Select sell_date, Count(product) as num_sold, STRING_AGG(product,',')
     Group by sell_date
 Order By Sell_date 
 
-
+--1527. Patients With a Condition
+--https://leetcode.com/problems/patients-with-a-condition/description/?envType=study-plan&id=sql-i
+Select * from Patients
+Where conditions like 'DIAB1%' or conditions Like '% DIAB1%'
