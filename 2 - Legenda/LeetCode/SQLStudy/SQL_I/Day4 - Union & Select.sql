@@ -26,3 +26,20 @@ UNION
 Select product_id, 'store2' as store, store2 as price from Products Where store2 IS NOT NULL
 UNION
 Select product_id, 'store3' as store, store3 as price from Products Where store3 IS NOT NULL
+
+--608. Tree Node
+--https://leetcode.com/problems/tree-node/description/?envType=study-plan&id=sql-i
+
+ Select id, 
+ CASE  
+		WHEN p_id IS NULL THEN 'Root'
+		WHEN id  in (Select id from Tree Where id  not in (Select Distinct p_id from Tree Where p_id is not null)) Then 'Leaf'
+		Else 'Inner' END AS type
+ FROM Tree
+
+ --176. Second Highest Salary
+--https://leetcode.com/problems/second-highest-salary/description/?envType=study-plan&id=sql-i
+select max(salary) as SecondHighestSalary 
+from employee
+where salary <> (select max(salary) from employee);
+
