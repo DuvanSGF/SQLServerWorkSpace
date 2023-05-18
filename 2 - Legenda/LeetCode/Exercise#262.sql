@@ -11,6 +11,10 @@ Create a better Query using Temp Table To clean the data,
 But in leet code you can use your Imagination and your Logic.
 REMEMBER you're a Rock!!
 */
+
+--https://leetcode.com/problems/trips-and-users/
+--262. Trips and Users
+
 --CTE to Join All my separed queries
 With Batman as (
 Select A.request_at as [Day],  
