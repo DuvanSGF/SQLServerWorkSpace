@@ -32,4 +32,54 @@ End
 EXEC SPGetHeoresByID '1'
 
 --Exercise #2: Creating a SP with more ids entry and return a data
+
+ALTER PROCEDURE SPGetHerosbyIds
+(@ids varchar(2000))
+AS
+SET NOCOUNT ON; 
+BEGIN
+    declare @sql nvarchar(4000);
+    SET @sql = N'Select * from Heros Where id in ('+ @ids +')'
+    Exec SP_EXECUTESQL @sql
+
+END
+
+Exec SPGetHerosbyIds '1, 2'
+
+--id	name	powerid	health	status	currentFlag
+--1	Batman	1	50000	1	NULL
+--2	Thor	2	60000	1	NULL
+
+ALTER PROCEDURE SPGetHerosbyIdsv2
+(@ids varchar(2000))
+AS
+SET NOCOUNT ON; 
+BEGIN
+    declare @sql nvarchar(4000);
+    SET @sql = N'Select * from Heros Where id in ('''+ REPLACE(@ids,',',''',''') + ''')'
+	--print @SQL
+    Exec SP_EXECUTESQL @sql
+                                          
+END
+
+Exec SPGetHerosbyIdsv2 '1,2'
+
+--It's another way to do the same query
+
+
+--Exercise #3 --DBO split -- Remeber You can create your Own Split y create my own  
+Create PROCEDURE SPGetHerosbyIdsv3
+(@ids varchar(2000))
+AS
+SET NOCOUNT ON; 
+BEGIN
+    declare @sql nvarchar(4000);
+    SET @sql = N'Select * from Heros Where id in (Select * from dbo.split(@ids,','))'
+	--print @SQL
+    Exec SP_EXECUTESQL @sql                                       
+END
+
+Exec SPGetHerosbyIdsv3 '1,2'
+
+
 --Exercise #3: SP with Try Catch and most advanced Structure
