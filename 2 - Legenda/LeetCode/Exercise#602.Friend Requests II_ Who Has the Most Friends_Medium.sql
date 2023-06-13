@@ -1,5 +1,5 @@
 -- =============================================
--- Author:		In. Duván Albeiro Mejia Cortes
+-- Author:		Ing. Duván Albeiro Mejia Cortes
 -- Create date: 12-06-2023
 -- Description:	602. Friend Requests II: Who Has the Most Friends
 -- Nivel: Medium
