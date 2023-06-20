@@ -2,7 +2,7 @@
 -- Author:		Ing. Duván Albeiro Mejia Cortes
 -- Create date: 13-06-2023
 -- Description:	607. Sales Person
--- Nivel: Easy
+-- Level: Easy
 -- ============================================= 
 
 --https://leetcode.com/problems/sales-person/description/

@@ -2,7 +2,7 @@
 -- Author:		Ing. Duván Albeiro Mejia Cortes
 -- Create date: 16-06-2023
 -- Description:	619. Biggest Single Number
--- Nivel: Easy
+-- Level: Easy
 -- ============================================= 
 
 --https://leetcode.com/problems/biggest-single-number/description/

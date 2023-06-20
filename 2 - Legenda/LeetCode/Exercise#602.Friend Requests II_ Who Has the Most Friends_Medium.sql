@@ -2,7 +2,7 @@
 -- Author:		Ing. Duván Albeiro Mejia Cortes
 -- Create date: 12-06-2023
 -- Description:	602. Friend Requests II: Who Has the Most Friends
--- Nivel: Medium
+-- Level: Medium
 -- ============================================= 
 
 --https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/description/

@@ -2,7 +2,7 @@
 -- Author:		Ing. Duván Albeiro Mejia Cortes
 -- Create date: 16-06-2023
 -- Description:	620. Not Boring Movies
--- Nivel: Easy
+-- Level: Easy
 -- ============================================= 
 
 --https://leetcode.com/problems/not-boring-movies/description/
