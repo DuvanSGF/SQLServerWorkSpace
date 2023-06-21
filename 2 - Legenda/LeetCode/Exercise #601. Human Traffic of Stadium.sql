@@ -1,5 +1,5 @@
 -- =============================================
--- Author:		In. Duván Albeiro Mejia Cortes
+-- Author:		Ing. Duván Albeiro Mejia Cortes
 -- Create date: 11-06-2023
 -- Description:	601. Human Traffic of Stadium
 -- ============================================= 
