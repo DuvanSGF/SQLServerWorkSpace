@@ -1,5 +1,5 @@
 -- =============================================
--- Author:		In. Duván Albeiro Mejia Cortes
+-- Author:		Ing. Duván Albeiro Mejia Cortes
 -- Create date: 30-05-2023
 -- Description:	586. Customer Placing the Largest Number of Orders
 -- ============================================= 

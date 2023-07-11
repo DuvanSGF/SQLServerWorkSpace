@@ -1,5 +1,5 @@
 -- =============================================
--- Author:		In. Duván Albeiro Mejia Cortes
+-- Author:		Ing. Duván Albeiro Mejia Cortes
 -- Create date: 18-05-2023
 -- Description:	262. Trips and Users LeetCode - Hard
 -- ============================================= 

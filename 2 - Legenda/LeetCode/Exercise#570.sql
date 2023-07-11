@@ -1,5 +1,5 @@
 -- =============================================
--- Author:		In. Duván Albeiro Mejia Cortes
+-- Author:		Ing. Duván Albeiro Mejia Cortes
 -- Create date: 22-05-2023
 -- Description:	570. Managers with at Least 5 Direct Reports
 -- ============================================= 

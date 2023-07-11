@@ -1,5 +1,5 @@
 -- =============================================
--- Author:		In. Duván Albeiro Mejia Cortes
+-- Author:		Ing. Duván Albeiro Mejia Cortes
 -- Create date: 22-05-2023
 -- Description:	5577. Employee Bonus
 -- ============================================= 
