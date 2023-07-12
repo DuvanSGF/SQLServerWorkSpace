@@ -1,3 +1,10 @@
+-- =============================================
+-- Author:		Ing. Duván Albeiro Mejia Cortes
+-- Create Date: 12-07-2023
+-- Last Update: 12-07-2023
+-- Description:	Working with CTE's Queries
+
+
 --Ejercicio 1 With CTE
 WITH SalesMonth
 AS (
@@ -15,7 +22,6 @@ GROUP BY OrderMonth
 ORDER BY 1
 
 --Ejercicio 2 with CTE
---Ejercicio
 --Select * from [dbo].[battles]
 Select top 10 percent * from [dbo].[Battletransaction]
 GO
@@ -36,3 +42,14 @@ Group by YEAR(DateOfTransaction)
 
 Select A.Año,A.CantidadBatallas,A.TotalGanacias,B.TotalPerdidas, (A.TotalGanacias-B.TotalPerdidas) as Ganacia from cte A
 Left Outer Join perdidas B on A.Año = B.Año
+
+
+--CTE As table Expresions
+With  Batman(number) as 
+(
+Select 1 
+Union All 
+Select number + 1 from Batman Where number < 10
+)
+
+Select * from Batman
