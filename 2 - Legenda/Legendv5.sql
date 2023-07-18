@@ -115,23 +115,3 @@ pivot
 )
 --Union Tables
 Select * from finalFirstEvent
-Union All
-Select * from finalSecondEvent
-Union all
-Select * from finalthirdEvent
-
--- Eliminar todos los elementos de la caché del plan para toda la instancia 
-DBCC FREEPROCCACHE;
-
--- Vacia toda la memoria caché del plan para toda la instancia 
-DBCC FREESESSIONCACHE;
-
-
-
-DBCC FREESYSTEMCACHE ('ALL', [default]);
-
-
-DECLARE @dbcc_stmt sysname;  
-SET @dbcc_stmt = 'CHECKDB';  
-DBCC HELP (@dbcc_stmt);  
-GO
