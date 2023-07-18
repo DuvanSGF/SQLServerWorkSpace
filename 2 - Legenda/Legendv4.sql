@@ -94,35 +94,41 @@ Where event_id = 4361 AND score = (SELECT MAX(score)
 ) as TempTable
 Where DenseTheRank between 1 and 3
 ),
-tempThirdEvent as (
-Select DISTINCT
-		DenseTheRank,
-		Event_id,
-(
-		SELECT SUBSTRING(
-		(
-			SELECT ',' + Name
-			From thirdEvent
-			WHERE DenseTheRank = t.DenseTheRank FOR XML PATH('')), 2, 200000)
-) as name
- from thirdEvent t),
-
- finalthirdEvent as (
-select event_id, [1] as first,[2] as second,[3] as third
-from
-(
-  select event_id, name, DenseTheRank
-  from tempThirdEvent
-) d
-pivot
-(
-  max(name)
-  for DenseTheRank in ([1],[2],[3])
-) piv
+E2 as (
+Select Top(10) Event_id, participant_name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
+from [dbo].[scoretable]
+Where event_id = 3478
 )
---Union Tables
-Select * from finalFirstEvent
-Union All
-Select * from finalSecondEvent
-Union all
-Select * from finalthirdEvent
+
+UNION ALL
+Select Top(5) Event_id, participant_name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
+from [dbo].[scoretable]
+Where event_id = 4361
+GO
+
+Select distinct Top(5) event_id,participant_name,score from [dbo].[scoretable] where event_id = 3478
+Order BY Score DESC
+GO
+
+Select Top(10)* from [dbo].[scoretable] where event_id = 3478
+Order BY Score DESC
+
+Select Top(5)  Event_id, participant_name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
+from [dbo].[scoretable]
+Where event_id = 3478
+Group by participant_name, Event_id,score
+having Count(*) >1
+
+--Con subconsulta
+SELECT Distinct participant_name
+from [dbo].[scoretable]
+Where event_id = 3478
+GO
+
+
+Select Event_id as Id, participant_name as Name, score, RANK() OVER (partition by Event_id ORDER BY Score DESC) as TheRank, Dense_RANK() OVER (partition by Event_id ORDER BY Score DESC) as DenseTheRank
+from [dbo].[scoretable]
+Where event_id = 3478
+
+
+
