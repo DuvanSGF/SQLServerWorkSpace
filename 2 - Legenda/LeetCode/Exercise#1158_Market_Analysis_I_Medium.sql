@@ -4,7 +4,7 @@
 -- Description:	1158. Market Analysis I
 -- Level:   Medium
 
---hhttps://leetcode.com/problems/market-analysis-i/description/
+--https://leetcode.com/problems/market-analysis-i/description/
 
 /* Write your T-SQL query statement below */
 SELECT 
