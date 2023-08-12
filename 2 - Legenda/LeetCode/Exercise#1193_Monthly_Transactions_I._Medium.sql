@@ -1,7 +1,7 @@
 -- =============================================
 -- Author:		Ing. Duván Albeiro Mejia Cortes
 -- Create date: 09-08-2023
--- Description:	1179. Reformat Department Table
+-- Description:	1193. Monthly Transactions I
 -- Level:   Medium
 -- =============================================
 
